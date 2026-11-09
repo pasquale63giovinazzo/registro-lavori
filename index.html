@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0E3A3B">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Registro">
+<title>Registro dei lavori</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icona.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icona-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="stile.css">
+</head>
+<body>
+<header class="testa">
+  <div class="testa-riga">
+    <h1>Registro dei lavori</h1>
+    <span class="agg" id="agg"></span>
+  </div>
+  <input id="cerca" type="search" placeholder="Cerca lavoro, cliente, account…" aria-label="Cerca" hidden>
+  <div class="filtri" id="filtri" hidden></div>
+</header>
+
+<main id="main">
+  <section id="collega" class="collega" hidden>
+    <h2>Collega il telefono</h2>
+    <p>Sul PC apri il Registro, premi <b>📱 Telefono</b> e inquadra il QR con la fotocamera.</p>
+    <p>Se l'hai aperto dall'icona nella schermata Home, incolla qui il link che trovi sotto il QR:</p>
+    <textarea id="incolla" rows="4" placeholder="Incolla qui il link…" aria-label="Link di collegamento"></textarea>
+    <button class="btn" id="btnIncolla" type="button">Collega</button>
+    <p class="err" id="errCollega" role="alert"></p>
+  </section>
+  <section id="v-progetti" hidden></section>
+  <section id="v-account" hidden></section>
+  <section id="v-prom" hidden></section>
+</main>
+
+<nav class="barra" id="barra" hidden>
+  <button type="button" data-v="progetti" aria-current="page"><span aria-hidden="true">🗂️</span>Progetti</button>
+  <button type="button" data-v="account"><span aria-hidden="true">🔑</span>Account</button>
+  <button type="button" data-v="prom"><span aria-hidden="true">📌</span>Da sistemare<b id="nProm"></b></button>
+</nav>
+
+<div class="velo" id="velo"></div>
+<section class="foglio" id="foglio" role="dialog" aria-modal="true" aria-labelledby="fTit">
+  <div class="foglio-testa"><h2 id="fTit"></h2><button type="button" class="chiudi" id="chiudi" aria-label="Chiudi">×</button></div>
+  <div class="foglio-corpo" id="fCorpo"></div>
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>

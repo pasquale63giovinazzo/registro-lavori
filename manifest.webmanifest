@@ -1,0 +1,15 @@
+{
+  "name": "Registro dei lavori",
+  "short_name": "Registro",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#E9EFEE",
+  "theme_color": "#0E3A3B",
+  "lang": "it",
+  "icons": [
+    {"src": "icona-180.png", "sizes": "180x180", "type": "image/png"},
+    {"src": "icona-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"},
+    {"src": "icona.svg", "sizes": "any", "type": "image/svg+xml"}
+  ]
+}
