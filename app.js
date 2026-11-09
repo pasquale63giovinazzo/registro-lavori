@@ -1,5 +1,5 @@
 /* Registro dei lavori – app telefono (solo lettura).
-   Dati: dati.bin = "REG1" + nonce(12) + AES-256-GCM(gzip(JSON)), uguale a telefono.py.
+   Dati: dati.bin = "REG2" + nonce(12) + AES-256-GCM(JSON), uguale a telefono.py.
    La chiave arriva nel link (#k=...), resta solo su questo telefono. */
 "use strict";
 const CATEGORIE = [
@@ -29,9 +29,11 @@ const aB64 = u => { let s=""; for(let i=0;i<u.length;i+=8192) s+=String.fromChar
 
 async function decifra(buf, chiave){
   const u = new Uint8Array(buf);
-  if(String.fromCharCode(...u.slice(0,4))!=="REG1") throw new Error("formato");
+  const magia = String.fromCharCode(...u.slice(0,4));
+  if(magia!=="REG2" && magia!=="REG1") throw new Error("formato");
   const k = await crypto.subtle.importKey("raw", b64u(chiave), "AES-GCM", false, ["decrypt"]);
   const piano = await crypto.subtle.decrypt({name:"AES-GCM", iv:u.slice(4,16)}, k, u.slice(16));
+  if(magia==="REG2") return JSON.parse(new TextDecoder().decode(piano));
   const ds = new Blob([piano]).stream().pipeThrough(new DecompressionStream("gzip"));
   return JSON.parse(await new Response(ds).text());
 }

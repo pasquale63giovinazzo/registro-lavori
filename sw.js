@@ -1,5 +1,5 @@
 // Tiene l'app disponibile anche senza internet. I dati cifrati li salva app.js.
-const CACHE = "registro-v1";
+const CACHE = "registro-v2";
 const GUSCIO = ["./", "index.html", "stile.css", "app.js", "manifest.webmanifest", "icona.svg", "icona-180.png", "icona-512.png"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(GUSCIO)).then(() => self.skipWaiting())); });
 self.addEventListener("activate", e => {
